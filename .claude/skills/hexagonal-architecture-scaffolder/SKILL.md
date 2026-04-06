@@ -8,7 +8,7 @@ version: 1.0.0
 
 ## Overview
 
-This skill guides you through scaffolding complete features across all layers of the hexagonal architecture used in this Python Sprint Zero project. It ensures proper layer separation, dependency injection, and adherence to project standards.
+This skill guides you through scaffolding complete features across all layers of the hexagonal architecture used in this Knowledge Matchmaker Relationship Engine project. It ensures proper layer separation, dependency injection, and adherence to project standards.
 
 ## When to Use This Skill
 
@@ -32,7 +32,7 @@ The project follows hexagonal architecture with these layers:
 
 ### Step 1: Create Domain Model
 
-**Location:** `src/python_sprint_zero/domain/model/{feature_name}.py`
+**Location:** `src/knowledge_matchmaker_relationship_engine/domain/model/{feature_name}.py`
 
 Create a Pydantic model representing your domain entity:
 
@@ -54,7 +54,7 @@ class FeatureName(BaseModel):
 
 ### Step 2: Create Repository Interface
 
-**Location:** `src/python_sprint_zero/domain/repository/{feature_name}_repository.py`
+**Location:** `src/knowledge_matchmaker_relationship_engine/domain/repository/{feature_name}_repository.py`
 
 Define the abstract repository interface:
 
@@ -62,7 +62,7 @@ Define the abstract repository interface:
 from abc import ABC, abstractmethod
 from typing import Optional
 from uuid import UUID
-from python_sprint_zero.domain.model.{feature_name} import FeatureName
+from knowledge_matchmaker_relationship_engine.domain.model.{feature_name} import FeatureName
 
 class FeatureNameQueryRepository(ABC):
     @abstractmethod
@@ -82,15 +82,15 @@ class FeatureNameCommandRepository(ABC):
 
 ### Step 3: Create Repository Implementation
 
-**Location:** `src/python_sprint_zero/infrastructure/persistence/in_memory/in_memory_{feature_name}_repository.py`
+**Location:** `src/knowledge_matchmaker_relationship_engine/infrastructure/persistence/in_memory/in_memory_{feature_name}_repository.py`
 
 Implement the repository interface:
 
 ```python
 from typing import Optional
 from uuid import UUID
-from python_sprint_zero.domain.model.{feature_name} import FeatureName
-from python_sprint_zero.domain.repository.{feature_name}_repository import (
+from knowledge_matchmaker_relationship_engine.domain.model.{feature_name} import FeatureName
+from knowledge_matchmaker_relationship_engine.domain.repository.{feature_name}_repository import (
     FeatureNameQueryRepository,
     FeatureNameCommandRepository
 )
@@ -122,14 +122,14 @@ class InMemoryFeatureNameCommandRepository(FeatureNameCommandRepository):
 
 ### Step 4: Create Use Cases
 
-**Location:** `src/python_sprint_zero/application/use_case/{feature_name}_use_case.py`
+**Location:** `src/knowledge_matchmaker_relationship_engine/application/use_case/{feature_name}_use_case.py`
 
 Create use cases that orchestrate the workflow:
 
 ```python
 from uuid import UUID
-from python_sprint_zero.domain.model.{feature_name} import FeatureName
-from python_sprint_zero.domain.repository.{feature_name}_repository import (
+from knowledge_matchmaker_relationship_engine.domain.model.{feature_name} import FeatureName
+from knowledge_matchmaker_relationship_engine.domain.repository.{feature_name}_repository import (
     FeatureNameQueryRepository,
     FeatureNameCommandRepository
 )
@@ -161,7 +161,7 @@ class CreateFeatureNameUseCase:
 
 ### Step 5: Create Data Transfer Objects (DTOs)
 
-**Location:** `src/python_sprint_zero/interface/api/data_transfer_object/{feature_name}_data_transfer_object.py`
+**Location:** `src/knowledge_matchmaker_relationship_engine/interface/api/data_transfer_object/{feature_name}_data_transfer_object.py`
 
 Create Pydantic models for API requests/responses:
 
@@ -195,7 +195,7 @@ class FeatureNameApiResponseDataTransferObject(BaseModel):
 
 ### Step 6: Create Controller
 
-**Location:** `src/python_sprint_zero/interface/api/controller/{feature_name}_controller.py`
+**Location:** `src/knowledge_matchmaker_relationship_engine/interface/api/controller/{feature_name}_controller.py`
 
 Create FastAPI controller with routes:
 
@@ -205,11 +205,11 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import HTTPBasicCredentials
 
-from python_sprint_zero.application.use_case.{feature_name}_use_case import (
+from knowledge_matchmaker_relationship_engine.application.use_case.{feature_name}_use_case import (
     GetFeatureNameUseCase,
     CreateFeatureNameUseCase
 )
-from python_sprint_zero.interface.api.data_transfer_object.{feature_name}_data_transfer_object import (
+from knowledge_matchmaker_relationship_engine.interface.api.data_transfer_object.{feature_name}_data_transfer_object import (
     FeatureNameApiRequestDataTransferObject,
     FeatureNameApiResponseDataTransferObject
 )
@@ -286,12 +286,12 @@ Ensure each new package directory has an `__init__.py` file:
 
 ```bash
 # If creating new directories, add __init__.py
-touch src/python_sprint_zero/domain/model/__init__.py
-touch src/python_sprint_zero/domain/repository/__init__.py
-touch src/python_sprint_zero/infrastructure/persistence/in_memory/__init__.py
-touch src/python_sprint_zero/application/use_case/__init__.py
-touch src/python_sprint_zero/interface/api/controller/__init__.py
-touch src/python_sprint_zero/interface/api/data_transfer_object/__init__.py
+touch src/knowledge_matchmaker_relationship_engine/domain/model/__init__.py
+touch src/knowledge_matchmaker_relationship_engine/domain/repository/__init__.py
+touch src/knowledge_matchmaker_relationship_engine/infrastructure/persistence/in_memory/__init__.py
+touch src/knowledge_matchmaker_relationship_engine/application/use_case/__init__.py
+touch src/knowledge_matchmaker_relationship_engine/interface/api/controller/__init__.py
+touch src/knowledge_matchmaker_relationship_engine/interface/api/data_transfer_object/__init__.py
 ```
 
 ### Step 8: Create Corresponding Test Files
@@ -299,12 +299,12 @@ touch src/python_sprint_zero/interface/api/data_transfer_object/__init__.py
 For each source file created, create a corresponding test file with matching structure:
 
 **Test structure mirrors source structure:**
-- `tests/python_sprint_zero/domain/model/test_{feature_name}.py`
-- `tests/python_sprint_zero/domain/repository/test_{feature_name}_repository.py`
-- `tests/python_sprint_zero/infrastructure/persistence/in_memory/test_in_memory_{feature_name}_repository.py`
-- `tests/python_sprint_zero/application/use_case/test_{feature_name}_use_case.py`
-- `tests/python_sprint_zero/interface/api/controller/test_{feature_name}_controller.py`
-- `tests/python_sprint_zero/interface/api/data_transfer_object/data_transfer_object/test_{feature_name}_data_transfer_object.py`
+- `tests/knowledge_matchmaker_relationship_engine/domain/model/test_{feature_name}.py`
+- `tests/knowledge_matchmaker_relationship_engine/domain/repository/test_{feature_name}_repository.py`
+- `tests/knowledge_matchmaker_relationship_engine/infrastructure/persistence/in_memory/test_in_memory_{feature_name}_repository.py`
+- `tests/knowledge_matchmaker_relationship_engine/application/use_case/test_{feature_name}_use_case.py`
+- `tests/knowledge_matchmaker_relationship_engine/interface/api/controller/test_{feature_name}_controller.py`
+- `tests/knowledge_matchmaker_relationship_engine/interface/api/data_transfer_object/data_transfer_object/test_{feature_name}_data_transfer_object.py`
 
 **Important:** Use the Test Generator skill to create tests following the one-assertion-per-test rule.
 
@@ -314,11 +314,11 @@ Wire up the new components in the Lagom container (typically in `interface/api/m
 
 ```python
 from lagom import Container
-from python_sprint_zero.domain.repository.{feature_name}_repository import (
+from knowledge_matchmaker_relationship_engine.domain.repository.{feature_name}_repository import (
     FeatureNameQueryRepository,
     FeatureNameCommandRepository
 )
-from python_sprint_zero.infrastructure.persistence.in_memory.in_memory_{feature_name}_repository import (
+from knowledge_matchmaker_relationship_engine.infrastructure.persistence.in_memory.in_memory_{feature_name}_repository import (
     InMemoryFeatureNameQueryRepository,
     InMemoryFeatureNameCommandRepository
 )
@@ -333,7 +333,7 @@ container[FeatureNameCommandRepository] = InMemoryFeatureNameCommandRepository
 Add the new controller to the FastAPI application:
 
 ```python
-from python_sprint_zero.interface.api.controller.{feature_name}_controller import FeatureNameController
+from knowledge_matchmaker_relationship_engine.interface.api.controller.{feature_name}_controller import FeatureNameController
 
 # In main.py
 controller = FeatureNameController(

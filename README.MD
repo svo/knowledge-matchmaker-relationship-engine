@@ -1,8 +1,8 @@
-# Python Sprint Zero
+# Knowledge Matchmaker Relationship Engine
 
-[![Build Builder](https://github.com/svo/python-sprint-zero/actions/workflows/builder.yml/badge.svg)](https://github.com/svo/python-sprint-zero/actions/workflows/builder.yml)
-[![Build Development](https://github.com/svo/python-sprint-zero/actions/workflows/development.yml/badge.svg)](https://github.com/svo/python-sprint-zero/actions/workflows/development.yml)
-[![Build Service](https://github.com/svo/python-sprint-zero/actions/workflows/service.yml/badge.svg)](https://github.com/svo/python-sprint-zero/actions/workflows/service.yml)
+[![Build Builder](https://github.com/svo/knowledge-matchmaker-relationship-engine/actions/workflows/builder.yml/badge.svg)](https://github.com/svo/knowledge-matchmaker-relationship-engine/actions/workflows/builder.yml)
+[![Build Development](https://github.com/svo/knowledge-matchmaker-relationship-engine/actions/workflows/development.yml/badge.svg)](https://github.com/svo/knowledge-matchmaker-relationship-engine/actions/workflows/development.yml)
+[![Build Service](https://github.com/svo/knowledge-matchmaker-relationship-engine/actions/workflows/service.yml/badge.svg)](https://github.com/svo/knowledge-matchmaker-relationship-engine/actions/workflows/service.yml)
 
 A production-ready Python service template implementing Hexagonal Architecture and Domain-Driven Design principles. This project provides a solid foundation for building maintainable, testable, and scalable microservices with FastAPI.
 

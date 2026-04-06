@@ -1,4 +1,4 @@
-# Claude Code Skills for Python Sprint Zero
+# Claude Code Skills for Knowledge Matchmaker Relationship Engine
 
 This directory contains custom Claude Code skills tailored to this project's strict architectural and coding standards.
 

@@ -5,7 +5,7 @@
 |
 
 ====================
-Python Sprint Zero
+Knowledge Matchmaker Relationship Engine
 ====================
 
 Clean architecture meets DDD in a Python-based backend framework with clearly defined boundaries for domain, application, infrastructure, and interface layers.

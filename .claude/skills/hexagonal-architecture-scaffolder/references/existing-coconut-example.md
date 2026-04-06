@@ -5,7 +5,7 @@ This document shows the complete structure of the existing `coconut` feature as 
 ## File Structure
 
 ```
-src/python_sprint_zero/
+src/knowledge_matchmaker_relationship_engine/
 ├── domain/
 │   ├── model/
 │   │   └── coconut.py                                    # Domain entity
@@ -27,7 +27,7 @@ src/python_sprint_zero/
         └── data_transfer_object/
             └── coconut_data_transfer_object.py           # Request/Response DTOs
 
-tests/python_sprint_zero/
+tests/knowledge_matchmaker_relationship_engine/
 ├── domain/
 │   ├── model/
 │   │   └── test_coconut.py

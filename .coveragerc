@@ -1,9 +1,9 @@
 [run]
 branch = True
-source = python_sprint_zero
+source = knowledge_matchmaker_relationship_engine
 omit =
     */__init__.py
-    */python_sprint_zero/__main__.py
+    */knowledge_matchmaker_relationship_engine/__main__.py
 
 [paths]
 source =

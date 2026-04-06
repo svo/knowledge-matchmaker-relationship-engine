@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 # shellcheck disable=SC1090,SC1091
-source ~/.local/pipx/venvs/python-sprint-zero/bin/activate &&
+source ~/.local/pipx/venvs/knowledge-matchmaker-relationship-engine/bin/activate &&
 
-python3 -m python_sprint_zero
+python3 -m knowledge_matchmaker_relationship_engine

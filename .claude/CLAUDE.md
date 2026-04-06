@@ -1,4 +1,18 @@
-# Python Sprint Zero - Claude Code Instructions
+# Knowledge Matchmaker Relationship Engine - Claude Code Instructions
+
+## Project Purpose
+
+The core differentiator of the knowledge-matchmaker system. Runs on port 8003. Receives user thinking (from the thinking-extractor), queries the corpus vector store, and classifies each relevant work into one of four relationship types. Returns pointers only — deliberately no summaries or content from the works themselves.
+
+### Core Domain Concepts
+
+- `RelationshipType` — enum: RESONANCE | CONFLICT | BLIND_SPOT | OPEN_SPACE
+- `Relationship` — a classified connection between the user's thinking and a corpus work
+- `RelationshipMap` — the full set of relationships for a given thinking input
+- `Pointer` — the output object: title, relationship_type, reason (why it matters to this specific thinking), source_url — NO content or summaries from the source
+- `ReasonForUser` — a terse, specific explanation of why this work matters to *this* user's argument; references the user's specific claim/assumption/framing
+
+The critical invariant: the Pointer API response type contains no fields for source content. The system knows what the papers say and deliberately does not pass that on.
 
 ## Absolute Non-Negotiables
 

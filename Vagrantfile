@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     SHELL
 
     development.vm.provider :docker do |docker|
-      docker.image = "svanosselaer/python-sprint-zero-development:latest"
+      docker.image = "svanosselaer/knowledge-matchmaker-relationship-engine-development:latest"
       docker.has_ssh = true
       docker.pull = true
       docker.volumes = [
@@ -28,7 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       development.cache.enable :apt
     end
 
-    development.vm.hostname = 'python-sprint-zero-vagrant'
+    development.vm.hostname = 'knowledge-matchmaker-relationship-engine-vagrant'
 
     development.vm.provision :ansible do |ansible|
       ansible.playbook = PLAYBOOK

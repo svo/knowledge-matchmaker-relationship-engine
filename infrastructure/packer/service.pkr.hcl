@@ -1,4 +1,4 @@
-source "docker" "python-sprint-zero-service" {
+source "docker" "knowledge-matchmaker-relationship-engine-service" {
   changes     = ["EXPOSE 8000", "CMD [\"/run.sh\"]"]
   commit      = "true"
   image       = "debian:12-slim"
@@ -14,7 +14,7 @@ variable "version" {
 }
 
 build {
-  sources = ["source.docker.python-sprint-zero-service"]
+  sources = ["source.docker.knowledge-matchmaker-relationship-engine-service"]
 
   provisioner "shell" {
     inline = [
@@ -50,7 +50,7 @@ build {
   }
 
   post-processor "docker-tag" {
-    repository = "svanosselaer/python-sprint-zero-service"
+    repository = "svanosselaer/knowledge-matchmaker-relationship-engine-service"
     tags       = ["latest", var.version]
   }
 }

@@ -1,2 +1,2 @@
-graft src/python_sprint_zero/resources
-include src/python_sprint_zero/py.typed
+graft src/knowledge_matchmaker_relationship_engine/resources
+include src/knowledge_matchmaker_relationship_engine/py.typed
