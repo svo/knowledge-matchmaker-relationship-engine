@@ -16,4 +16,5 @@ class ThinkingExtractorHttpClient(ThinkingExtractorClient):
                 json={"text": draft_text},
             )
             response.raise_for_status()
-            return response.json()["positions"]
+            positions: list[dict] = response.json()["positions"]
+            return positions

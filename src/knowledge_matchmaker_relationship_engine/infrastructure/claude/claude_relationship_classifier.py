@@ -1,6 +1,7 @@
 import os
 
 import anthropic
+from anthropic.types import MessageParam, ToolParam
 
 from knowledge_matchmaker_relationship_engine.domain.model.relationship import RelationshipType
 from knowledge_matchmaker_relationship_engine.domain.service.relationship_classifier import RelationshipClassifier
@@ -11,7 +12,7 @@ class ClaudeRelationshipClassifier(RelationshipClassifier):
         self._client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
     def classify(self, thinking_summary: str, title: str, chunk_text: str) -> tuple[RelationshipType, str]:
-        tools = [
+        tools: list[ToolParam] = [
             {
                 "name": "classify_relationship",
                 "description": "Classify the relationship between the user's thinking and a work.",
@@ -31,7 +32,7 @@ class ClaudeRelationshipClassifier(RelationshipClassifier):
             }
         ]
 
-        messages = [
+        messages: list[MessageParam] = [
             {
                 "role": "user",
                 "content": (
@@ -49,12 +50,12 @@ class ClaudeRelationshipClassifier(RelationshipClassifier):
             model="claude-haiku-4-5-20251001",
             max_tokens=256,
             tools=tools,
-            tool_choice={"type": "tool", "name": "classify_relationship"},
+            tool_choice=anthropic.types.ToolChoiceToolParam(type="tool", name="classify_relationship"),
             messages=messages,
         )
 
         tool_use = next(block for block in response.content if block.type == "tool_use")
         relationship_type = RelationshipType(tool_use.input["relationship_type"])
-        reason = tool_use.input["reason"]
+        reason = str(tool_use.input["reason"])
 
         return relationship_type, reason

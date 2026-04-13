@@ -6,7 +6,14 @@ from assertpy import assert_that
 from fastapi.openapi.utils import get_openapi
 from unittest.mock import patch, Mock
 
-from knowledge_matchmaker_relationship_engine.interface.api.main import app, get_container, global_container, get_global_container, main, run
+from knowledge_matchmaker_relationship_engine.interface.api.main import (
+    app,
+    get_container,
+    global_container,
+    get_global_container,
+    main,
+    run,
+)
 
 OPENAPI_JSON_FILE_PATH = "build/openapi.json"
 OPENAPI_JSON_FILE_PATH_OPEN_FLAG = "w"

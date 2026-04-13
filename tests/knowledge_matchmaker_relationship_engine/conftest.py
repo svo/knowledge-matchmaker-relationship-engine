@@ -4,8 +4,14 @@ from unittest.mock import Mock
 import pytest
 
 from knowledge_matchmaker_relationship_engine.domain.model.coconut import Coconut
-from knowledge_matchmaker_relationship_engine.domain.repository.coconut_repository import CoconutQueryRepository, CoconutCommandRepository
-from knowledge_matchmaker_relationship_engine.infrastructure.security.basic_authentication import BasicAuthenticator, SecurityDependency
+from knowledge_matchmaker_relationship_engine.domain.repository.coconut_repository import (
+    CoconutQueryRepository,
+    CoconutCommandRepository,
+)
+from knowledge_matchmaker_relationship_engine.infrastructure.security.basic_authentication import (
+    BasicAuthenticator,
+    SecurityDependency,
+)
 
 
 @pytest.fixture

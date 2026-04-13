@@ -1,7 +1,10 @@
 import uuid
 
 from knowledge_matchmaker_relationship_engine.domain.model.coconut import Coconut
-from knowledge_matchmaker_relationship_engine.domain.repository.coconut_repository import CoconutCommandRepository, CoconutQueryRepository
+from knowledge_matchmaker_relationship_engine.domain.repository.coconut_repository import (
+    CoconutCommandRepository,
+    CoconutQueryRepository,
+)
 from knowledge_matchmaker_relationship_engine.infrastructure.persistence.in_memory.shared_storage import SharedStorage
 
 

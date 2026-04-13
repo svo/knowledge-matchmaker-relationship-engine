@@ -6,7 +6,10 @@ from fastapi.testclient import TestClient
 from fastapi import FastAPI
 from lagom import Container
 
-from knowledge_matchmaker_relationship_engine.domain.repository.coconut_repository import CoconutCommandRepository, CoconutQueryRepository
+from knowledge_matchmaker_relationship_engine.domain.repository.coconut_repository import (
+    CoconutCommandRepository,
+    CoconutQueryRepository,
+)
 from knowledge_matchmaker_relationship_engine.infrastructure.persistence.in_memory.in_memory_coconut_command_repository import (
     InMemoryCoconutCommandRepository,
 )
@@ -17,7 +20,10 @@ from knowledge_matchmaker_relationship_engine.infrastructure.persistence.in_memo
 from knowledge_matchmaker_relationship_engine.interface.api.controller.coconut_controller import (
     create_coconut_controller,
 )
-from knowledge_matchmaker_relationship_engine.infrastructure.security.basic_authentication import BasicAuthenticator, SecurityDependency
+from knowledge_matchmaker_relationship_engine.infrastructure.security.basic_authentication import (
+    BasicAuthenticator,
+    SecurityDependency,
+)
 
 
 @pytest.fixture(scope="module")

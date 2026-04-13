@@ -6,7 +6,10 @@ from pydantic import UUID4
 
 from lagom import Container
 
-from knowledge_matchmaker_relationship_engine.application.use_case.coconut_use_case import CreateCoconutUseCase, GetCoconutUseCase
+from knowledge_matchmaker_relationship_engine.application.use_case.coconut_use_case import (
+    CreateCoconutUseCase,
+    GetCoconutUseCase,
+)
 from knowledge_matchmaker_relationship_engine.interface.api.data_transfer_object.coconut_data_transfer_object import (
     CoconutApiRequestDataTransferObject,
     CoconutApiResponseDataTransferObject,

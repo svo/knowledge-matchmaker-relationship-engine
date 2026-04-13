@@ -1,3 +1,6 @@
+import os
+from typing import Sequence
+
 import chromadb
 from openai import OpenAI
 
@@ -7,7 +10,7 @@ from knowledge_matchmaker_relationship_engine.domain.service.corpus_query import
 class ChromaCorpusQuery(CorpusQuery):
     def __init__(self) -> None:
         self._chroma_client = chromadb.EphemeralClient()
-        self._openai_client = OpenAI()
+        self._openai_client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
         self._collection = self._chroma_client.get_or_create_collection(name="corpus")
 
     def query(self, thinking_summary: str, top_k: int = 5) -> list[dict]:
@@ -15,7 +18,7 @@ class ChromaCorpusQuery(CorpusQuery):
             model="text-embedding-3-small",
             input=thinking_summary,
         )
-        embedding = response.data[0].embedding
+        embedding: Sequence[float] = response.data[0].embedding
 
         results = self._collection.query(
             query_embeddings=[embedding],

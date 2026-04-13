@@ -5,10 +5,20 @@ from assertpy import assert_that
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
-from knowledge_matchmaker_relationship_engine.application.use_case.build_relationship_map_use_case import BuildRelationshipMapUseCase
-from knowledge_matchmaker_relationship_engine.domain.model.relationship import Pointer, RelationshipMap, RelationshipType
-from knowledge_matchmaker_relationship_engine.interface.api.controller.relationship_map_controller import RelationshipMapController
-from knowledge_matchmaker_relationship_engine.interface.api.data_transfer_object.relationship_map_data_transfer_object import PointerDto
+from knowledge_matchmaker_relationship_engine.application.use_case.build_relationship_map_use_case import (
+    BuildRelationshipMapUseCase,
+)
+from knowledge_matchmaker_relationship_engine.domain.model.relationship import (
+    Pointer,
+    RelationshipMap,
+    RelationshipType,
+)
+from knowledge_matchmaker_relationship_engine.interface.api.controller.relationship_map_controller import (
+    RelationshipMapController,
+)
+from knowledge_matchmaker_relationship_engine.interface.api.data_transfer_object.relationship_map_data_transfer_object import (
+    PointerDto,
+)
 
 
 class TestRelationshipMapController:

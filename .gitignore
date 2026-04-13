@@ -1,5 +1,6 @@
 # Development environment
 .vagrant
+.claude/settings.local.json
 
 # Temporary and binary files
 *~

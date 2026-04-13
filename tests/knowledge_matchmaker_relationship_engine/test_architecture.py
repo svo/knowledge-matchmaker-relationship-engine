@@ -101,7 +101,9 @@ def test_should_maintain_shared_module_independence():
         )
         .match("knowledge_matchmaker_relationship_engine.shared.*")
         .should_not_import(
-            "knowledge_matchmaker_relationship_engine.application.*", "knowledge_matchmaker_relationship_engine.infrastructure.*", "knowledge_matchmaker_relationship_engine.interface.*"
+            "knowledge_matchmaker_relationship_engine.application.*",
+            "knowledge_matchmaker_relationship_engine.infrastructure.*",
+            "knowledge_matchmaker_relationship_engine.interface.*",
         )
         .check("knowledge_matchmaker_relationship_engine")
     )

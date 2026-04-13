@@ -2,7 +2,10 @@ import uuid
 from typing import Optional
 
 from knowledge_matchmaker_relationship_engine.domain.model.coconut import Coconut
-from knowledge_matchmaker_relationship_engine.domain.repository.coconut_repository import CoconutCommandRepository, CoconutQueryRepository
+from knowledge_matchmaker_relationship_engine.domain.repository.coconut_repository import (
+    CoconutCommandRepository,
+    CoconutQueryRepository,
+)
 
 
 class GetCoconutUseCase:

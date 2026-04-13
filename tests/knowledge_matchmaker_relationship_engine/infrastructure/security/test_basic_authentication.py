@@ -16,7 +16,9 @@ from knowledge_matchmaker_relationship_engine.infrastructure.security.basic_auth
 
 
 class TestGetBasicAuthenticator:
-    @patch("knowledge_matchmaker_relationship_engine.infrastructure.security.basic_authentication.get_application_setting_provider")
+    @patch(
+        "knowledge_matchmaker_relationship_engine.infrastructure.security.basic_authentication.get_application_setting_provider"
+    )
     def test_should_create_authenticator_with_configured_user(self, mock_get_provider):
         mock_provider = Mock()
         mock_provider.get.side_effect = lambda key: "admin" if key == "admin" else "password"

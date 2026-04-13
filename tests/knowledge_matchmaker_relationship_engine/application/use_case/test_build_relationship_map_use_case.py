@@ -3,7 +3,9 @@ from unittest.mock import Mock
 import pytest
 from assertpy import assert_that
 
-from knowledge_matchmaker_relationship_engine.application.use_case.build_relationship_map_use_case import BuildRelationshipMapUseCase
+from knowledge_matchmaker_relationship_engine.application.use_case.build_relationship_map_use_case import (
+    BuildRelationshipMapUseCase,
+)
 from knowledge_matchmaker_relationship_engine.domain.model.relationship import RelationshipMap, RelationshipType
 from knowledge_matchmaker_relationship_engine.domain.service.corpus_query import CorpusQuery
 from knowledge_matchmaker_relationship_engine.domain.service.relationship_classifier import RelationshipClassifier
@@ -32,7 +34,9 @@ class TestBuildRelationshipMapUseCase:
         return mock
 
     @pytest.fixture
-    def use_case(self, mock_thinking_extractor_client, mock_corpus_query, mock_relationship_classifier) -> BuildRelationshipMapUseCase:
+    def use_case(
+        self, mock_thinking_extractor_client, mock_corpus_query, mock_relationship_classifier
+    ) -> BuildRelationshipMapUseCase:
         return BuildRelationshipMapUseCase(
             thinking_extractor_client=mock_thinking_extractor_client,
             corpus_query=mock_corpus_query,

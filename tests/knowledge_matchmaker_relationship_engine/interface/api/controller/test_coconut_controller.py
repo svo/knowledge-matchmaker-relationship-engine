@@ -7,10 +7,16 @@ from fastapi import FastAPI
 from fastapi.security import HTTPBasicCredentials
 from fastapi.testclient import TestClient
 
-from knowledge_matchmaker_relationship_engine.application.use_case.coconut_use_case import CreateCoconutUseCase, GetCoconutUseCase
+from knowledge_matchmaker_relationship_engine.application.use_case.coconut_use_case import (
+    CreateCoconutUseCase,
+    GetCoconutUseCase,
+)
 from knowledge_matchmaker_relationship_engine.domain.model.coconut import Coconut
 from knowledge_matchmaker_relationship_engine.interface.api.controller.coconut_controller import CoconutController
-from knowledge_matchmaker_relationship_engine.infrastructure.security.basic_authentication import BasicAuthenticator, SecurityDependency
+from knowledge_matchmaker_relationship_engine.infrastructure.security.basic_authentication import (
+    BasicAuthenticator,
+    SecurityDependency,
+)
 
 
 class TestCoconutController:

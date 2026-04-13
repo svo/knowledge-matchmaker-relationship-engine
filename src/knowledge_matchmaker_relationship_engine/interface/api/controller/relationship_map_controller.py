@@ -1,6 +1,8 @@
 from fastapi import APIRouter
 
-from knowledge_matchmaker_relationship_engine.application.use_case.build_relationship_map_use_case import BuildRelationshipMapUseCase
+from knowledge_matchmaker_relationship_engine.application.use_case.build_relationship_map_use_case import (
+    BuildRelationshipMapUseCase,
+)
 from knowledge_matchmaker_relationship_engine.interface.api.data_transfer_object.relationship_map_data_transfer_object import (
     BuildRelationshipMapRequestDto,
     RelationshipMapResponseDto,
@@ -26,5 +28,7 @@ class RelationshipMapController:
         return RelationshipMapResponseDto.from_domain_model(relationship_map)
 
 
-def create_relationship_map_controller(build_relationship_map_use_case: BuildRelationshipMapUseCase) -> RelationshipMapController:
+def create_relationship_map_controller(
+    build_relationship_map_use_case: BuildRelationshipMapUseCase,
+) -> RelationshipMapController:
     return RelationshipMapController(build_relationship_map_use_case=build_relationship_map_use_case)
