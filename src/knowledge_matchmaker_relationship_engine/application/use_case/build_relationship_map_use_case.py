@@ -16,8 +16,9 @@ class BuildRelationshipMapUseCase:
         self._relationship_classifier = relationship_classifier
 
     def execute(self, draft_text: str) -> RelationshipMap:
-        positions = self._thinking_extractor_client.extract(draft_text)
-        thinking_summary = " ".join(p["text"] for p in positions)
+        extracted = self._thinking_extractor_client.extract(draft_text)
+        all_positions = extracted["claims"] + extracted["assumptions"] + extracted["framings"]
+        thinking_summary = " ".join(all_positions)
 
         results = self._corpus_query.query(thinking_summary, top_k=5)
 

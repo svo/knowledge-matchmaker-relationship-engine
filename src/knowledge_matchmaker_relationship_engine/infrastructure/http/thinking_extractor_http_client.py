@@ -9,12 +9,12 @@ class ThinkingExtractorHttpClient(ThinkingExtractorClient):
     def __init__(self) -> None:
         self._base_url = os.environ.get("THINKING_EXTRACTOR_URL", "http://localhost:8001")
 
-    def extract(self, draft_text: str) -> list[dict]:
+    def extract(self, draft_text: str) -> dict[str, list[str]]:
         with httpx.Client() as client:
             response = client.post(
                 f"{self._base_url}/extract",
-                json={"text": draft_text},
+                json={"draft": draft_text},
             )
             response.raise_for_status()
-            positions: list[dict] = response.json()["positions"]
-            return positions
+            data = response.json()
+            return {"claims": data["claims"], "assumptions": data["assumptions"], "framings": data["framings"]}

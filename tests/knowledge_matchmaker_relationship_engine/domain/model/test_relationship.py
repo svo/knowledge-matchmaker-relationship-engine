@@ -49,3 +49,15 @@ def test_pointer_should_not_have_summary_field():
 
 def test_pointer_should_not_have_content_field():
     assert_that(Pointer.model_fields).does_not_contain_key("content")
+
+
+def test_pointer_should_not_have_abstract_field():
+    assert_that(Pointer.model_fields).does_not_contain_key("abstract")
+
+
+def test_pointer_should_not_have_text_field():
+    assert_that(Pointer.model_fields).does_not_contain_key("text")
+
+
+def test_pointer_should_not_have_body_field():
+    assert_that(Pointer.model_fields).does_not_contain_key("body")

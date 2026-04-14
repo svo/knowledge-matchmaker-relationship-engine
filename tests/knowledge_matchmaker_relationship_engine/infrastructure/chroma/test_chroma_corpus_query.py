@@ -10,9 +10,11 @@ from knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpu
 class TestChromaCorpusQuery:
     @patch("knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.OpenAI")
     @patch(
-        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.EphemeralClient"
+        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.PersistentClient"
     )
-    def test_should_return_items_from_query_results(self, mock_chroma_client_class, mock_openai_class):
+    def test_should_return_items_from_query_results(
+        self, mock_chroma_client_class: MagicMock, mock_openai_class: MagicMock
+    ) -> None:
         mock_embedding_response = MagicMock()
         mock_embedding_response.data = [MagicMock(embedding=[0.1, 0.2, 0.3])]
         mock_openai_instance = MagicMock()
@@ -38,9 +40,11 @@ class TestChromaCorpusQuery:
 
     @patch("knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.OpenAI")
     @patch(
-        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.EphemeralClient"
+        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.PersistentClient"
     )
-    def test_should_return_title_from_metadata(self, mock_chroma_client_class, mock_openai_class):
+    def test_should_return_title_from_metadata(
+        self, mock_chroma_client_class: MagicMock, mock_openai_class: MagicMock
+    ) -> None:
         mock_embedding_response = MagicMock()
         mock_embedding_response.data = [MagicMock(embedding=[0.1, 0.2, 0.3])]
         mock_openai_instance = MagicMock()
@@ -66,9 +70,11 @@ class TestChromaCorpusQuery:
 
     @patch("knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.OpenAI")
     @patch(
-        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.EphemeralClient"
+        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.PersistentClient"
     )
-    def test_should_return_empty_list_when_no_metadatas(self, mock_chroma_client_class, mock_openai_class):
+    def test_should_return_empty_list_when_no_metadatas(
+        self, mock_chroma_client_class: MagicMock, mock_openai_class: MagicMock
+    ) -> None:
         mock_embedding_response = MagicMock()
         mock_embedding_response.data = [MagicMock(embedding=[0.1, 0.2, 0.3])]
         mock_openai_instance = MagicMock()
@@ -88,9 +94,11 @@ class TestChromaCorpusQuery:
 
     @patch("knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.OpenAI")
     @patch(
-        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.EphemeralClient"
+        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.PersistentClient"
     )
-    def test_should_use_text_embedding_model(self, mock_chroma_client_class, mock_openai_class):
+    def test_should_use_text_embedding_model(
+        self, mock_chroma_client_class: MagicMock, mock_openai_class: MagicMock
+    ) -> None:
         mock_embedding_response = MagicMock()
         mock_embedding_response.data = [MagicMock(embedding=[0.1, 0.2, 0.3])]
         mock_openai_instance = MagicMock()
@@ -111,9 +119,11 @@ class TestChromaCorpusQuery:
 
     @patch("knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.OpenAI")
     @patch(
-        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.EphemeralClient"
+        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.PersistentClient"
     )
-    def test_should_pass_top_k_as_n_results(self, mock_chroma_client_class, mock_openai_class):
+    def test_should_pass_top_k_as_n_results(
+        self, mock_chroma_client_class: MagicMock, mock_openai_class: MagicMock
+    ) -> None:
         mock_embedding_response = MagicMock()
         mock_embedding_response.data = [MagicMock(embedding=[0.1, 0.2, 0.3])]
         mock_openai_instance = MagicMock()
@@ -133,9 +143,11 @@ class TestChromaCorpusQuery:
 
     @patch("knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.OpenAI")
     @patch(
-        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.EphemeralClient"
+        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.PersistentClient"
     )
-    def test_should_default_missing_metadata_fields_to_empty_string(self, mock_chroma_client_class, mock_openai_class):
+    def test_should_default_missing_metadata_fields_to_empty_string(
+        self, mock_chroma_client_class: MagicMock, mock_openai_class: MagicMock
+    ) -> None:
         mock_embedding_response = MagicMock()
         mock_embedding_response.data = [MagicMock(embedding=[0.1, 0.2, 0.3])]
         mock_openai_instance = MagicMock()
@@ -152,3 +164,27 @@ class TestChromaCorpusQuery:
         result = corpus_query.query("user thinking")
 
         assert_that(result[0]["title"]).is_equal_to("")
+
+    @patch("knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.OpenAI")
+    @patch(
+        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.PersistentClient"
+    )
+    def test_should_use_configured_chroma_data_path(
+        self, mock_chroma_client_class: MagicMock, mock_openai_class: MagicMock
+    ) -> None:
+        with patch.dict("os.environ", {"CHROMA_DATA_PATH": "/custom/chroma/path"}):
+            ChromaCorpusQuery()
+
+        assert_that(mock_chroma_client_class.call_args.kwargs["path"]).is_equal_to("/custom/chroma/path")
+
+    @patch("knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.OpenAI")
+    @patch(
+        "knowledge_matchmaker_relationship_engine.infrastructure.chroma.chroma_corpus_query.chromadb.PersistentClient"
+    )
+    def test_should_use_default_chroma_data_path_when_env_not_set(
+        self, mock_chroma_client_class: MagicMock, mock_openai_class: MagicMock
+    ) -> None:
+        with patch.dict("os.environ", {}, clear=True):
+            ChromaCorpusQuery()
+
+        assert_that(mock_chroma_client_class.call_args.kwargs["path"]).is_equal_to("/data/chroma")

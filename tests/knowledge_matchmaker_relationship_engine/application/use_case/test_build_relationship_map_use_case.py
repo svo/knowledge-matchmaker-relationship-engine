@@ -16,7 +16,7 @@ class TestBuildRelationshipMapUseCase:
     @pytest.fixture
     def mock_thinking_extractor_client(self) -> Mock:
         mock = Mock(spec=ThinkingExtractorClient)
-        mock.extract.return_value = [{"text": "distributed cognition is key", "position_type": "claim"}]
+        mock.extract.return_value = {"claims": ["distributed cognition is key"], "assumptions": [], "framings": []}
         return mock
 
     @pytest.fixture

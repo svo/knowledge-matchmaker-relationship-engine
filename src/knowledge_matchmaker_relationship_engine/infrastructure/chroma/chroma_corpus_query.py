@@ -9,7 +9,8 @@ from knowledge_matchmaker_relationship_engine.domain.service.corpus_query import
 
 class ChromaCorpusQuery(CorpusQuery):
     def __init__(self) -> None:
-        self._chroma_client = chromadb.EphemeralClient()
+        chroma_data_path = os.environ.get("CHROMA_DATA_PATH", "/data/chroma")
+        self._chroma_client = chromadb.PersistentClient(path=chroma_data_path)
         self._openai_client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
         self._collection = self._chroma_client.get_or_create_collection(name="corpus")
 

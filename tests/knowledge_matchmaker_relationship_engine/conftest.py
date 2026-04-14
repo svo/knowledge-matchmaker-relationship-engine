@@ -1,3 +1,5 @@
+import os
+import tempfile
 import uuid
 from unittest.mock import Mock
 
@@ -12,6 +14,8 @@ from knowledge_matchmaker_relationship_engine.infrastructure.security.basic_auth
     BasicAuthenticator,
     SecurityDependency,
 )
+
+os.environ.setdefault("CHROMA_DATA_PATH", tempfile.mkdtemp())
 
 
 @pytest.fixture

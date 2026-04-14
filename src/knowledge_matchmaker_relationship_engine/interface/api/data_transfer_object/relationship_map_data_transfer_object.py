@@ -24,10 +24,10 @@ class PointerDto(BaseModel):
 
 
 class RelationshipMapResponseDto(BaseModel):
-    pointers: list[PointerDto]
+    relationships: list[PointerDto]
 
     @classmethod
     def from_domain_model(cls, domain_model: Any) -> "RelationshipMapResponseDto":
         return cls(
-            pointers=[PointerDto.from_domain_model(p) for p in domain_model.pointers],
+            relationships=[PointerDto.from_domain_model(p) for p in domain_model.pointers],
         )
